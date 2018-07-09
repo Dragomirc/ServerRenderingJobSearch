@@ -4,9 +4,10 @@ import { StaticRouter, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import serialize from "serialize-javascript";
 import { renderRoutes } from "react-router-config";
-import routes from "../client/routes";
+import routes from "../../client/routes";
 
 export default (req, store, context) => {
+  console.log("Routes", renderRoutes(routes));
   const content = renderToString(
     <Provider store={store}>
       <StaticRouter location={req.path} context={context}>
@@ -28,8 +29,7 @@ export default (req, store, context) => {
   return `
    <html>
         <head>
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">  
-          </head>
+        </head>
         <body>
           <div id="root">${content}</div>
          <script>window.INITIAL_STATE = ${serialize(store.getState())}</script>
