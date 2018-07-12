@@ -10,7 +10,7 @@ import { Route, Switch } from "react-router-dom";
 import axios from "axios";
 import { renderRoutes } from "react-router-config";
 import routes from "./routes";
-import reducers from "./combinedReducer";
+import reducers from "./ducks/combinedReducer";
 
 const store = createStore(
   reducers,
